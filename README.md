@@ -1,0 +1,1 @@
+Upload files to GitHub root and deploy on Railway. This uses a simple reverse proxy example.

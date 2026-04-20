@@ -1,0 +1,9 @@
+
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Google Classroom</title>
+<style>html,body{margin:0;height:100%;overflow:hidden;font-family:Arial}#bar{height:52px;background:#1b1f28;padding:8px;display:flex;gap:8px}button{padding:8px 14px}iframe{width:100%;height:calc(100% - 52px);border:none}</style>
+</head><body><div id='bar'><button onclick='load()'>Open AniWatch</button><button onclick='cloak()'>about:blank</button></div><iframe id='f'></iframe>
+<script>
+function load(){document.getElementById('f').src='/proxy';}
+function cloak(){let w=open('about:blank');w.document.write(document.documentElement.outerHTML);w.document.close();}
+</script></body></html>
