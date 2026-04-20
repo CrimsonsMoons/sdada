@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Classroom</title>
+<link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+html,body{margin:0;height:100%;background:#111;overflow:hidden}
+#bar{height:56px;display:flex;gap:10px;padding:10px;background:#1b1f28}
+#url{flex:1;border:none;border-radius:10px;padding:0 12px;background:#0d1118;color:#fff}
+button{border:none;border-radius:10px;padding:0 16px;background:#4f8cff;color:#fff;font-weight:bold;cursor:pointer}
+iframe{width:100%;height:calc(100% - 56px);border:none;background:#fff}
+</style></head>
+<body>
+<div id="bar">
+<input id="url" placeholder="Search or enter URL">
+<button onclick="go()">Go</button>
+<button onclick="cloak()">about:blank</button>
+</div>
+<iframe id="frame"></iframe>
+<script>
+const f=document.getElementById('frame');
+const u=document.getElementById('url');
+function normalize(v){
+v=v.trim();
+if(v.startsWith('http://')||v.startsWith('https://')) return v;
+if(v.includes('.')&&!v.includes(' ')) return 'https://'+v;
+return 'https://www.google.com/search?q='+encodeURIComponent(v);
+}
+function go(){f.src=normalize(u.value);}
+u.addEventListener('keydown',e=>{if(e.key==='Enter')go();});
+function cloak(){
+let w=window.open('about:blank','_blank');
+w.document.write(document.documentElement.outerHTML);
+w.document.close();
+}
+document.addEventListener('keydown',e=>{
+if(e.key==='\\'){location.href='https://classroom.google.com';}
+});
+</script>
+</body></html>
